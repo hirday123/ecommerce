@@ -1,0 +1,28 @@
+{% extends 'product/index.html' %}
+
+{% block one %}
+
+<div class="row">
+{% for i in data %}
+ <div class="col-6">
+ <img src="{{i.Image.url}}" alt="" srcset="">
+ <div>
+   Product Name:{{i.name}}
+   Price:{{i.price}}
+   In Stock:{{i.quantity}}   
+  <form action="" method="post">
+    {% csrf_token %}
+
+   <input type="number" value="" name="req_quan">   
+   <input type="hidden"  name="instock" value="{{i.quantity}}"> 
+   <input type="hidden"  name="id_product" value="{{i.id}}"> 
+    <input type="Submit" value="Add to Cart">
+    {% if id == i.id %} {{msg1 }}  {% endif %}
+  </form>
+ 
+</div>
+   <br>
+</div>
+ {% endfor %}
+</div>
+{% endblock one %}

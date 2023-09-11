@@ -1,0 +1,27 @@
+{% extends 'product/index.html' %}
+
+{% block one %}
+
+    <a href="{% url 'signup' %}">SIGNUP</a>
+    <a href="{% url 'logout' %}">LOGOUT</a>
+<br><br>
+
+<form action="{% url 'log' %}" method="post">
+    {% csrf_token %}
+
+   {% for i in fm %}
+
+  {{i.label_tag}} {{i}}  {{i.errors|striptags}}   <br><br>
+
+   {% endfor %}
+
+   <input type="submit" value="login">
+
+</form>
+
+{% for i in messages %}
+
+    {{i}}
+{% endfor %}
+
+{% endblock one %}
